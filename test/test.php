@@ -8,7 +8,10 @@
 
 class SampleClassTest extends PHPUnit_Framework_TestCase
 {
-    public function testSampleFunction()
+    /**
+     * @test
+     */
+    public function iHavePHPUnitTest()
     {
         self::assertTrue(true);
     }

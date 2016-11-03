@@ -1,2 +1,6 @@
 vendor/
 .idea/
+text_files/in/*
+!text_files/in/.gitkeep
+text_files/out/*
+!text_files/out/.gitkeep

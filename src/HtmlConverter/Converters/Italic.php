@@ -18,13 +18,6 @@ class Italic extends AbstractConverter
 
     public function convert($string)
     {
-        $pattern = '/(_)([A-Za-z0-9]+)(_)/';
-        $string = preg_replace_callback(
-            $pattern,
-            function ($matches) {
-                return "<i>" . $matches[2] . "</i>";
-            },
-            $string);
-        return $string;
+        return $this->simpleEvenChange('_', "<i>", "</i>", $string);
     }
 }

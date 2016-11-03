@@ -52,7 +52,7 @@ class BoldTest extends PHPUnit_Framework_TestCase
      */
     public function oddMarkdowns()
     {
-        $this->assertEquals('<strong>text</strong>asdf**', $this->converter->convert('**text**asdf**'));
+        $this->assertEquals('<strong>text**asdf</strong>', $this->converter->convert('**text**asdf**'));
     }
 
     /**
@@ -60,7 +60,7 @@ class BoldTest extends PHPUnit_Framework_TestCase
      */
     public function twoMarkdownPair()
     {
-        $this->assertEquals('<strong>text</strong>asdf<strong>asd</strong>', $this->converter->convert('**text**asdf**asd**'));
+        $this->assertEquals('<strong>text**asdf**asd</strong>', $this->converter->convert('**text**asdf**asd**'));
     }
 
     /**

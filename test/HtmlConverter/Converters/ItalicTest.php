@@ -50,7 +50,7 @@ class ItalicTest extends \PHPUnit_Framework_TestCase
      */
     public function oddMarkdowns()
     {
-        $this->assertEquals('<i>text</i>asdf_', $this->converter->convert('_text_asdf_'));
+        $this->assertEquals('<i>text_asdf</i>', $this->converter->convert('_text_asdf_'));
     }
 
     /**
@@ -58,7 +58,7 @@ class ItalicTest extends \PHPUnit_Framework_TestCase
      */
     public function twoMarkdownPair()
     {
-        $this->assertEquals('<i>text</i>asdf<i>asd</i>', $this->converter->convert('_text_asdf_asd_'));
+        $this->assertEquals('<i>text_asdf_asd</i>', $this->converter->convert('_text_asdf_asd_'));
     }
 
     /**

@@ -18,6 +18,6 @@ class InlineCode extends AbstractConverter
 
     function convert($string)
     {
-        // TODO: Implement convert() method.
+        return $this->simpleEvenChange('`', "<pre>", "</pre>", $string);
     }
 }

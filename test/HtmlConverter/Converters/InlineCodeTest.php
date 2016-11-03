@@ -6,10 +6,19 @@
  * Time: 9:29
  */
 
-namespace HtmlConverter\Converters;
+namespace HtmlConverter\Test\Converters;
 
 
-class InlineCodeTest extends \PHPUnit_Framework_TestCase
+use HtmlConverter\Converters\InlineCode;
+
+class InlineCodeTest extends SimpleConverterTest
 {
+    public function setUp()
+    {
+        $this->converter = new InlineCode();
+        $this->markdown = "`";
+        $this->replaceFront = "<pre>";
+        $this->replaceBack = "</pre>";
+    }
 
 }

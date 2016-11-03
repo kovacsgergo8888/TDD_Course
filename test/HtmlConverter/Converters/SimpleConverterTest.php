@@ -30,6 +30,11 @@ class SimpleConverterTest extends \PHPUnit_Framework_TestCase
      */
     protected $replaceBack;
 
+    public function setUp()
+    {
+        $this->markTestSkipped("It's a parentclass!");
+    }
+
 
     /**
      * @test

@@ -6,10 +6,19 @@
  * Time: 9:22
  */
 
-namespace HtmlConverter\Converters;
+namespace HtmlConverter\Test\Converters;
 
 
 class ATagTest extends \PHPUnit_Framework_TestCase
 {
 
+    public function setUp()
+    {
+        $this->markTestIncomplete("not ready yet");
+    }
+
+    public function test()
+    {
+        return;
+    }
 }

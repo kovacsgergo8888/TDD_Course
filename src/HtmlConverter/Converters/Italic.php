@@ -16,8 +16,15 @@ namespace HtmlConverter\Converters;
 class Italic extends AbstractConverter
 {
 
-    function convert($string)
+    public function convert($string)
     {
-        // TODO: Implement convert() method.
+        $pattern = '/(_)([A-Za-z0-9]+)(_)/';
+        $string = preg_replace_callback(
+            $pattern,
+            function ($matches) {
+                return "<i>" . $matches[2] . "</i>";
+            },
+            $string);
+        return $string;
     }
 }

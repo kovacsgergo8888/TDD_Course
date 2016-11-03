@@ -5,7 +5,8 @@
 
   "autoload": {
     "psr-4": {
-      "HtmlConverter\\" : "src/HtmlConverter/"
+      "HtmlConverter\\" : "src/HtmlConverter/",
+      "HtmlConverter\\Test\\" : "test/HtmlConverter"
     }
   }
 }

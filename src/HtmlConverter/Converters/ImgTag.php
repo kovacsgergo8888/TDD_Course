@@ -18,6 +18,16 @@ class ImgTag extends AbstractConverter
 
     function convert($string)
     {
-        // TODO: Implement convert() method.
+        $pattern = '/(.*)(\!\[.*\])(\(.*\))(.*)/';
+        $string = preg_replace_callback(
+            $pattern,
+            function ($matches) {
+                $matches[2] = str_replace(array("![", "]"), "", $matches[2]);
+                $matches[3] = str_replace(array("(", ")"), "", $matches[3]);
+                return $matches[1] . "<img src=\"" . $matches[2] . "\" alt=\"" . $matches[3] . "\" />" . $matches[4];
+            },
+            $string
+        );
+        return $string;
     }
 }

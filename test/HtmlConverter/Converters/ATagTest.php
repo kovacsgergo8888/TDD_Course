@@ -9,16 +9,23 @@
 namespace HtmlConverter\Test\Converters;
 
 
+use HtmlConverter\Converters\AbstractConverter;
+use HtmlConverter\Converters\ATag;
+
 class ATagTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var AbstractConverter
+     */
+    private $converter;
 
     public function setUp()
     {
-        $this->markTestIncomplete("not ready yet");
+        $this->converter = new ATag();
     }
 
-    public function test()
+    public function testTextFromExample()
     {
-        return;
+        $this->assertEquals("text1<a href=\"text2\">text3</a>text4",$this->converter->convert("text1[text2](text3)text4"));
     }
 }

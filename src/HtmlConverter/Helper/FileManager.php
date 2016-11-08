@@ -10,14 +10,53 @@ namespace HtmlConverter\Helper;
 
 class FileManager
 {
-    private $file;
+    private $input;
 
-    public function getContents()
+    private $output;
+
+    public function read()
     {
         try {
-            return file_get_contents($this->file);
+            return file_get_contents($this->input);
         } catch (\Exception $e) {
-            die("Error reading file: " . $this->file . "\n" . $e);
+            die("Error reading file: " . $this->input . "\n" . $e);
         }
+    }
+
+    public function write($data)
+    {
+        file_put_contents($this->output, $data);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInput()
+    {
+        return $this->input;
+    }
+
+    /**
+     * @param mixed $input
+     */
+    public function setInput($input)
+    {
+        $this->input = $input;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOutput()
+    {
+        return $this->output;
+    }
+
+    /**
+     * @param mixed $output
+     */
+    public function setOutput($output)
+    {
+        $this->output = $output;
     }
 }

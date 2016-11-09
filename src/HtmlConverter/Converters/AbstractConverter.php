@@ -21,8 +21,8 @@ abstract class AbstractConverter
      */
     protected function simpleEvenChange($markdown, $replaceFront, $replaceBack, $subject)
     {
-        $pattern = '/'.$markdown.'(.*)'.$markdown.'/';
-        $subject = preg_replace($pattern, $replaceFront . "$1" . $replaceBack, $subject);
+        $pattern = '/(^|\s|>|\b)' . $markdown . '(?=\S)([\s\S]+?)' . $markdown . '/';
+        $subject = preg_replace($pattern, "$1" . $replaceFront . "$2" . $replaceBack, $subject);
         return $subject;
     }
 }

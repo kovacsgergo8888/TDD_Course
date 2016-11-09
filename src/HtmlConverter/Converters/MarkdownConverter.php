@@ -14,7 +14,7 @@ class MarkdownConverter
     /** @var AbstractConverter[] $converters */
     protected $converters = [];
 
-    public function addConverter($converter)
+    public function addConverter(AbstractConverter $converter)
     {
         $this->converters[] = $converter;
     }

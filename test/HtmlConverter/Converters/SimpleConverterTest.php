@@ -83,4 +83,20 @@ class SimpleConverterTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals("text", $this->converter->convert("text"));
     }
+
+    public function dataProvider()
+    {
+        return [
+            ["text", "text"],
+            [$this->markdown . "text" . $this->markdown, $this->replaceFront . "text" . $this->replaceBack],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProvider
+     */
+    public function testFromProvided($input, $output)
+    {
+        $this->assertEquals($input, $output);
+    }
 }

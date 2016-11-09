@@ -6,7 +6,9 @@
   "autoload": {
     "psr-4": {
       "HtmlConverter\\" : "src/HtmlConverter/",
-      "HtmlConverter\\Test\\" : "test/HtmlConverter"
+      "HtmlConverter\\Test\\" : "test/HtmlConverter",
+      "StackOverflowProvider\\" : "src/StackOverflowProvider",
+      "StackOverflowProvider\\Test\\" : "test/StackOverflowProvider"
     }
   }
 }

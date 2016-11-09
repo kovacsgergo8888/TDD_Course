@@ -31,51 +31,11 @@ abstract class SimpleConverterTest extends \PHPUnit_Framework_TestCase
     protected $replaceBack;
 
     /**
-     * @test
+     * @dataProvider dataProvider
      */
-    public function threeText()
+    public function testFromProvided($input, $output)
     {
-        $this->assertEquals('text1' . $this->replaceFront . 'text2' . $this->replaceBack . 'text3', $this->converter->convert('text1' . $this->markdown . 'text2' . $this->markdown . 'text3'));
-    }
-
-    /**
-     * @test
-     */
-    public function twoText()
-    {
-        $this->assertEquals('ijfose' . $this->replaceFront . 'jseif' . $this->replaceBack . '', $this->converter->convert('ijfose' . $this->markdown . 'jseif' . $this->markdown . ''));
-    }
-
-    /**
-     * @test
-     */
-    public function oneText()
-    {
-        $this->assertEquals($this->replaceFront . 'joijr' . $this->replaceBack, $this->converter->convert($this->markdown . 'joijr' . $this->markdown . ''));
-    }
-
-    /**
-     * @test
-     */
-    public function oddMarkdowns()
-    {
-        $this->assertEquals($this->replaceFront . 'text' . $this->markdown . 'asdf' . $this->replaceBack, $this->converter->convert($this->markdown . 'text' . $this->markdown . 'asdf' . $this->markdown));
-    }
-
-    /**
-     * @test
-     */
-    public function twoMarkdownPair()
-    {
-        $this->assertEquals($this->replaceFront . 'text' . $this->markdown . 'asdf' . $this->markdown . 'asd' . $this->replaceBack, $this->converter->convert($this->markdown . 'text' . $this->markdown . 'asdf' . $this->markdown . 'asd' . $this->markdown));
-    }
-
-    /**
-     * @test
-     */
-    public function noMarkdown()
-    {
-        $this->assertEquals("text", $this->converter->convert("text"));
+        $this->assertEquals($input, $output);
     }
 
     public function dataProvider()
@@ -83,14 +43,9 @@ abstract class SimpleConverterTest extends \PHPUnit_Framework_TestCase
         return [
             ["text", "text"],
             [$this->markdown . "text" . $this->markdown, $this->replaceFront . "text" . $this->replaceBack],
+            ['text1' . $this->markdown . 'text2' . $this->markdown . 'text3', "text1" . $this->replaceFront . "text2" . $this->replaceBack . "text3"],
+            [$this->markdown . 'text2' . $this->markdown . 'text3', $this->replaceFront . "text2" . $this->replaceBack . "text3"],
+            [$this->markdown . 'text2' . $this->markdown . $this->markdown . 'text3' . $this->markdown, $this->replaceFront . "text2" . $this->replaceBack . $this->replaceFront . "text3" . $this->replaceBack],
         ];
-    }
-
-    /**
-     * @dataProvider dataProvider
-     */
-    public function testFromProvided($input, $output)
-    {
-        $this->assertEquals($input, $output);
     }
 }

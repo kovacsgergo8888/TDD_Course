@@ -11,7 +11,7 @@ namespace HtmlConverter\Test\Converters;
 
 use HtmlConverter\Converters\AbstractConverter;
 
-class SimpleConverterTest extends \PHPUnit_Framework_TestCase
+abstract class SimpleConverterTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var AbstractConverter
@@ -29,12 +29,6 @@ class SimpleConverterTest extends \PHPUnit_Framework_TestCase
      * @var string
      */
     protected $replaceBack;
-
-    public function setUp()
-    {
-        $this->markTestSkipped("It's a parentclass!");
-    }
-
 
     /**
      * @test

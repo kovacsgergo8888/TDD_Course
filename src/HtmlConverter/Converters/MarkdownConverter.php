@@ -10,34 +10,29 @@ namespace HtmlConverter\Converters;
 
 class MarkdownConverter
 {
-    protected $converters = [
-        "ImgTag",
-        "ATag",
-        "Bold",
-        "InlineCode",
-        "Italic",
-    ];
 
-    protected $Bold;
-    protected $ATag;
-    protected $ImgTag;
-    protected $InlineCode;
-    protected $Italic;
+    /** @var AbstractConverter[] $converters */
+    protected $converters = [];
+
+    public function addConverter($converter)
+    {
+        $this->converters[] = $converter;
+    }
 
     public function __construct()
     {
-        $this->ImgTag = new ImgTag();
-        $this->ATag = new ATag();
-        $this->Bold = new Bold();
-        $this->InlineCode = new InlineCode();
-        $this->Italic = new Italic();
+        $this->addConverter(new ImgTag());
+        $this->addConverter(new ATag());
+        $this->addConverter(new Bold());
+        $this->addConverter(new Italic());
+        $this->addConverter(new InlineCode());
     }
 
     public function convert($string)
     {
 
         foreach ($this->converters as $converter) {
-            $string = $this->$converter->convert($string);
+            $string = $converter->convert($string);
         }
         return $string;
     }

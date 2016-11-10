@@ -9,7 +9,7 @@
 namespace StackOverflowProvider\Api\Builder;
 
 
-final class QuestionTypes
+final class BuilderTypes
 {
     const FEATURED = "FeaturedBuilder";
     const ANSWERS = "AnswersBuilder";

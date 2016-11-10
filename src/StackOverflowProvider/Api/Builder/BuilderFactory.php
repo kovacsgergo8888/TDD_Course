@@ -14,9 +14,9 @@ class BuilderFactory
     public function getBuilder($type)
     {
         switch ($type) {
-            case QuestionTypes::FEATURED:
+            case BuilderTypes::FEATURED:
                 return new FeaturedBuilder();
-            case QuestionTypes::ANSWERS:
+            case BuilderTypes::ANSWERS:
                 return new AnswersBuilder();
         }
     }

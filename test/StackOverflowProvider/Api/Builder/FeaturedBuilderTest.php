@@ -10,11 +10,11 @@ namespace StackOverflowProvider\Test\Api\Builder;
 
 
 use StackOverflowProvider\Api\ApiFieldNames;
-use StackOverflowProvider\Api\Builder\QuestionTypes;
+use StackOverflowProvider\Api\Builder\BuilderTypes;
 
 class FeaturedBuilderTest extends BuilderTest
 {
-    protected $builderType = QuestionTypes::FEATURED;
+    protected $builderType = BuilderTypes::FEATURED;
 
     /**
      * @dataProvider provider

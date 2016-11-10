@@ -10,7 +10,7 @@ namespace StackOverflowProvider\Test\Api;
 
 
 use StackOverflowProvider\Api\Builder\BuilderFactory;
-use StackOverflowProvider\Api\Builder\QuestionTypes;
+use StackOverflowProvider\Api\Builder\BuilderTypes;
 
 class BuilderFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -27,8 +27,8 @@ class BuilderFactoryTest extends \PHPUnit_Framework_TestCase
     public function provider()
     {
         return [
-            ['\StackOverflowProvider\Api\Builder\AnswersBuilder', QuestionTypes::ANSWERS],
-            ['\StackOverflowProvider\Api\Builder\FeaturedBuilder', QuestionTypes::FEATURED],
+            ['\StackOverflowProvider\Api\Builder\AnswersBuilder', BuilderTypes::ANSWERS],
+            ['\StackOverflowProvider\Api\Builder\FeaturedBuilder', BuilderTypes::FEATURED],
         ];
     }
 

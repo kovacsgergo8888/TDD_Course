@@ -1,23 +1,37 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: kovacsgergely
+ * Date: 2016.11.10.
+ * Time: 20:31
+ */
+
 namespace StackOverflowProvider\Test\Api;
 
-use StackOverflowProvider\Api\ApiFieldNames;
+
 use StackOverflowProvider\Api\Builder\Builder;
+use StackOverflowProvider\Api\Builder\BuilderFactory;
 
-class BuilderTest extends \PHPUnit_Framework_TestCase
+abstract class BuilderTest extends \PHPUnit_Framework_TestCase
 {
-    public function testBuildUrl()
+    /**
+     * @var BuilderFactory
+     */
+    protected $builderFactory;
+
+    /**
+     * @var string
+     */
+    protected $builderType;
+
+    /**
+     * @var Builder
+     */
+    protected $builder;
+
+    public function setUp()
     {
-        $apiBuilder = new Builder();
-
-        $type = "Featured";
-        $query = [
-            ApiFieldNames::ORDER => ApiFieldNames::ORDEROPTION_DESC,
-            ApiFieldNames::SORT => ApiFieldNames::SORTOPTION_ACTIVITY,
-            ApiFieldNames::SITE => "stackoverflow",
-        ];
-        $url = $apiBuilder->build($type, $query);
-        $this->assertEquals("https://api.stackexchange.com/2.2/questions/featured?order=desc&sort=activity&site=stackoverflow", $url);
+        $this->builderFactory = new BuilderFactory();
+        $this->builder = $this->builderFactory->getBuilder($this->builderType);
     }
-
 }

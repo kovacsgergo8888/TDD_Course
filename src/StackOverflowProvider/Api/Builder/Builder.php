@@ -4,20 +4,24 @@
 namespace StackOverflowProvider\Api\Builder;
 
 
-class Builder
+abstract class Builder
 {
     const API_URL_BASE= "https://api.stackexchange.com/2.2/";
-    const API_URL_FEATURED = "questions/featured";
-    const API_URL_ANSWERS = "questions/{ids}/answers";
 
-    public function build($type, $query)
+    /**
+     * @var string
+     */
+    protected $apiUrlQuery;
+
+    /**
+     * @param array $query
+     * @return string
+     */
+    public function build($query)
     {
         $url = self::API_URL_BASE;
 
-        switch ($type) {
-            case 'Featured':
-                $url .= self::API_URL_FEATURED . "?";
-        }
+        $url .= $this->getApiUrlQuery() . "?";
 
         $params = [];
         foreach ($query as $param => $value) {
@@ -25,5 +29,13 @@ class Builder
         }
 
         return $url . implode("&", $params);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApiUrlQuery()
+    {
+        return $this->apiUrlQuery;
     }
 }

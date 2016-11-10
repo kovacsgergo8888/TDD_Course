@@ -9,7 +9,7 @@
 namespace StackOverflowProvider\Api;
 
 
-class ApiFieldNames
+final class ApiFieldNames
 {
     const ORDER = "order";
     const ORDEROPTION_ASC = "asc";

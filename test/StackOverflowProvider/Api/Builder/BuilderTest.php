@@ -6,7 +6,7 @@
  * Time: 20:31
  */
 
-namespace StackOverflowProvider\Test\Api;
+namespace StackOverflowProvider\Test\Api\Builder;
 
 
 use StackOverflowProvider\Api\Builder\Builder;

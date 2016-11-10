@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: kovacsgergely
  * Date: 2016.11.10.
- * Time: 20:29
+ * Time: 21:24
  */
 
 namespace StackOverflowProvider\Test\Api\Builder;
@@ -12,17 +12,16 @@ namespace StackOverflowProvider\Test\Api\Builder;
 use StackOverflowProvider\Api\ApiFieldNames;
 use StackOverflowProvider\Api\Builder\QuestionTypes;
 
-class FeaturedBuilderTest extends BuilderTest
+class AnswersBuilderTest extends BuilderTest
 {
-    protected $builderType = QuestionTypes::FEATURED;
+    protected $builderType = QuestionTypes::ANSWERS;
 
     /**
      * @dataProvider provider
-     * @param $expected
-     * @param $actual
      */
-    public function testBuild($expected, $actual)
+    public function testBuild($expected, $actual, $ids)
     {
+        $this->builder->setIds($ids);
         $this->assertEquals($expected, $this->builder->build($actual));
     }
 
@@ -30,11 +29,16 @@ class FeaturedBuilderTest extends BuilderTest
     {
         return [
             [
-                "https://api.stackexchange.com/2.2/questions/featured?order=desc&sort=activity&site=stackoverflow",
+                "https://api.stackexchange.com/2.2/questions/234234%3B355522%3B355355/answers?order=desc&sort=activity&site=stackoverflow",
                 [
                     ApiFieldNames::ORDER => ApiFieldNames::ORDEROPTION_DESC,
                     ApiFieldNames::SORT => ApiFieldNames::SORTOPTION_ACTIVITY,
                     ApiFieldNames::SITE => "stackoverflow",
+                ],
+                [
+                    234234,
+                    355522,
+                    355355,
                 ]
             ],
         ];

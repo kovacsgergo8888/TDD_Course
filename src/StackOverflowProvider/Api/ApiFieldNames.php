@@ -19,4 +19,5 @@ final class ApiFieldNames
     const SORTOPTION_VOTES = "votes";
     const SORTOPTION_CREATION = "creation";
     const SITE = "site";
+    const PAGESIZE = "pagesize";
 }

@@ -24,18 +24,23 @@ class CurlClient
     public function __construct()
     {
         $this->curl = curl_init();
-        $this->setOptions([
+        $this->addOptions([
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_TIMEOUT => 5,
+            CURLOPT_ENCODING => '',
         ]);
     }
 
     /**
      * @param array $options
      */
-    public function setOptions($options)
+    public function addOptions($options)
     {
-        $this->options = array_merge($this->options, $options);
+        if (is_array($options)) {
+            foreach ($options as $key => $value) {
+                $this->options[$key] = $value;
+            }
+        }
     }
 
     public function execute()
@@ -71,6 +76,15 @@ class CurlClient
     {
         return $this->error;
     }
+
+    /**
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
 
 
 }

@@ -9,7 +9,7 @@
 use HtmlConverter\Converters\MarkdownConverter;
 use HtmlConverter\Helper\FileManager;
 
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 $fileManager = new FileManager();
 $converter = new MarkdownConverter;

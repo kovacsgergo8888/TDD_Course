@@ -18,6 +18,9 @@ class AnswersBuilder extends Builder
      */
     protected $ids;
 
+    /**
+     * @return string
+     */
     public function getApiUrlQuery()
     {
         return str_replace("{ids}", implode("%3B", $this->ids), $this->apiUrlQuery);

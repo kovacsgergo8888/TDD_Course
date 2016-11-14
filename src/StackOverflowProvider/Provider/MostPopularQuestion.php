@@ -4,6 +4,7 @@
  * User: kovacsgergely
  * Date: 2016.11.13.
  * Time: 12:15
+ * https://api.stackexchange.com/docs/featured-questions
  */
 
 namespace StackOverflowProvider\Provider;
@@ -25,5 +26,15 @@ class MostPopularQuestion extends AbstractProvider
         ApiFieldNames::SITE => "stackoverflow",
         ApiFieldNames::PAGESIZE => "1",
     ];
+
+    /**
+     * @param $jsonString
+     * @return mixed
+     */
+    public function getQustionId($jsonString)
+    {
+        $apiResponse = json_decode($jsonString, true);
+        return $apiResponse['items'][0]['question_id'];
+    }
 
 }

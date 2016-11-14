@@ -14,12 +14,26 @@ use StackOverflowProvider\Provider\MostPopularQuestion;
 class MostPopularQuestionTest extends \PHPUnit_Framework_TestCase
 {
 
+    private $fixture;
+
+    private $stub;
+
+    public function setUp()
+    {
+        $this->fixture = file_get_contents(__DIR__ . "/../fixtures/most_popular.json");
+        $this->stub = $this->getMockBuilder(MostPopularQuestion::class)->getMock();
+        $this->stub->method("getJson")->willReturn($this->fixture);
+    }
+
     public function testGetJson()
     {
-        $stub = $this->getMockBuilder(MostPopularQuestion::class)->getMock();
-        $stub->method("getJson")->willReturn("OK");
+        $this->assertEquals($this->fixture, $this->stub->getJson());
+    }
 
-        $this->assertEquals("OK", $stub->getJson());
+    public function testGetQuestionId()
+    {
+        $object = new MostPopularQuestion();
+        $this->assertEquals('40342587', $object->getQustionId($this->stub->getJson()));
     }
 
 

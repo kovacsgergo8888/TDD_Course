@@ -6,23 +6,14 @@
  * Time: 20:54
  */
 
-use StackOverflowProvider\Provider\AnswersOfQuestion;
-use StackOverflowProvider\Provider\MostPopularQuestion;
+
+use StackOverflowProvider\Provider\UserIdsOfAnswersOfMostPopular;
 
 require_once "../vendor/autoload.php";
 
-$featuredProvider = new MostPopularQuestion();
-$featuredProvider->callApi();
-$mostPopular = json_decode($featuredProvider->getJson(), true);
-$questionId = $mostPopular['items'][0]['question_id'];
-
-$answersProvider = new AnswersOfQuestion();
-$answersProvider->setIds([$questionId]);
-$answersProvider->callApi();
-
-$usersOfAnswers = json_decode($answersProvider->getJson(), true);
+$userIds = new UserIdsOfAnswersOfMostPopular();
 
 echo '<pre>';
-var_dump($usersOfAnswers);
+var_dump($userIds->getUserIds());
 echo '<pre>';
 die;

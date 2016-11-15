@@ -13,7 +13,7 @@ require_once "../vendor/autoload.php";
 
 $userIds = new UserIdsOfAnswersOfMostPopular();
 
-echo "User IDs of answers of the most popular question on StackOverflow:<br>";
-foreach ($userIds as $userId) {
+echo "User IDs of answers of the most popular question on StackOverflow(" . $userIds->getQuestionId() . "):<br>";
+foreach ($userIds->getUserIds() as $userId) {
     echo $userId . "<br>";
 }

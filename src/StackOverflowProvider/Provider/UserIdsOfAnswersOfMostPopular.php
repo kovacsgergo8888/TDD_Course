@@ -26,21 +26,37 @@ class UserIdsOfAnswersOfMostPopular
      */
     private $userIds;
 
+    /**
+     * @var
+     */
+    private $questionId;
+
     public function __construct()
     {
         $this->answersOfQuestion = new AnswersOfQuestion();
         $this->mostPopular = new MostPopularQuestion();
 
         $this->mostPopular->callApi();
-        $questionId = $this->mostPopular->getQustionId($this->mostPopular->getJson());
+        $this->questionId = $this->mostPopular->getQustionId($this->mostPopular->getJson());
 
-        $this->answersOfQuestion->setIds([$questionId]);
+        $this->answersOfQuestion->setIds([$this->questionId]);
         $this->answersOfQuestion->callApi();
         $this->userIds = $this->answersOfQuestion->getListOfUserIds($this->answersOfQuestion->getJson());
     }
 
+    /**
+     * @return array
+     */
     public function getUserIds()
     {
         return $this->userIds;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuestionId()
+    {
+        return $this->questionId;
     }
 }
